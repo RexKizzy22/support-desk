@@ -1,0 +1,29 @@
+{
+  "name": "support-desk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd support-desk-server && pnpm dev\" \"cd support-desk-client && pnpm dev\" ",
+    "dev:server": "cd support-desk-server && pnpm dev",
+    "dev:client": "cd support-desk-client && pnpm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RexKizzy22/support-desk.git"
+  },
+  "keywords": [],
+  "author": "Kizito Inegbenose <kizitoinegbenose@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RexKizzy22/support-desk/issues"
+  },
+  "homepage": "https://github.com/RexKizzy22/support-desk#readme",
+  "devDependencies": {
+    "@types/nodemon": "^1.19.1",
+    "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "express-async-handler": "^1.2.0"
+  }
+}

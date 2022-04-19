@@ -1,0 +1,4 @@
+{
+  "eslint.workingDirectories": ["./support-desk-api"],
+  "eslint.packageManager": "pnpm"
+}
