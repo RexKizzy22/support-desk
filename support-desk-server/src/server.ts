@@ -74,7 +74,7 @@ if (process.env.NODE_ENV === "production") {
 
   app.get("*", (_: Request, res: Response) => {
     res.sendFile(__dirname, "../../support-desk-client/build/src/index.html");
-  })
+  });
 } else {
   staticDir = path.join(__dirname, "public");
   app.use(express.static(staticDir));
