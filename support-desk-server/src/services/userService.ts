@@ -1,10 +1,9 @@
-import userRepo from "@repos/user-repo";
 import { IUser } from "src/dataModels/userModel";
 import { UserNotFoundError } from "@shared/errors";
 import User from "../dbModels/userModel";
 import { generateToken } from "src/middlewares/auth";
 
-const { log, error } = console;
+const { error } = console;
 
 /**
  * Get all users.
@@ -27,7 +26,15 @@ const getOne = async (user: IUser): Promise<IUser> => {
       throw new UserNotFoundError();
     }
 
-    return newUser;
+    const data = {
+      id: newUser._id,
+      name: newUser.name,
+      token: generateToken(newUser._id),
+      email: newUser.email,
+      password: newUser.password
+    };
+
+    return data;
   } catch (err) {
     error(err.message);
     throw new Error("Error: finding user");
@@ -52,6 +59,7 @@ const addOne = async (user: IUser): Promise<IUser> => {
       id: newUser._id,
       token: generateToken(newUser._id),
       email: newUser.email,
+      password: newUser.password
     };
   } catch (err) {
     error(err.message);
@@ -59,39 +67,10 @@ const addOne = async (user: IUser): Promise<IUser> => {
   }
 };
 
-/**
- * Update one user.
- *
- * @param user
- * @returns
- */
-async function updateOne(user: IUser): Promise<void> {
-  const persists = await userRepo.persists(user.id as number);
-  if (!persists) {
-    throw new UserNotFoundError();
-  }
-  return userRepo.update(user);
-}
-
-/**
- * Delete a user by their id.
- *
- * @param id
- * @returns
- */
-async function deleteOne(id: number): Promise<void> {
-  const persists = await userRepo.persists(id);
-  if (!persists) {
-    throw new UserNotFoundError();
-  }
-  return userRepo.delete(id);
-}
 
 // Export default
 export default {
   getAll,
   getOne,
   addOne,
-  updateOne,
-  delete: deleteOne,
 } as const;

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Input from "../components/Form/Input";
 import Spinner from "../components/Spinner";
 import { useAppSelector, useAppDispatch } from "../hooks/useStore";
-import { login, reset } from "../state/auth/authSlice";
+import { login, reset } from "../state/slices/authSlice";
 
 interface FormData {
   email: string;

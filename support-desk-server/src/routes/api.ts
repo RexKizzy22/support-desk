@@ -1,6 +1,7 @@
 import { Router } from "express";
 import userRouter from "./userRouter";
 import ticketRouter from "./ticketRouter";
+// import noteRouter from "./noteRouter";
 
 // Export the base-router
 const baseRouter = Router();
@@ -9,5 +10,4 @@ const baseRouter = Router();
 baseRouter.use("/users", userRouter);
 baseRouter.use("/tickets", ticketRouter);
 
-// Export default.
 export default baseRouter;

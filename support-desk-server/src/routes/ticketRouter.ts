@@ -1,14 +1,25 @@
 import express from "express";
 import { secure } from "src/middlewares/auth";
-import { getTickets, createTicket, getTicket } from "../controllers/ticketController";
+import {
+  getTickets,
+  createTicket,
+  getTicket,
+  updateTicket,
+  deleteTicket
+} from "../controllers/ticketController";
+import noteRouter from "./noteRouter";
 
 const router = express.Router();
 
-router.route("/")
-    .get(secure, getTickets)
-    .post(secure, createTicket);
+// Re-route to noteRouter
+router.use("/:ticketId/notes", noteRouter);
+
+router.route("/").get(secure, getTickets).post(secure, createTicket);
 
 router.route("/:id")
-    .get(secure, getTicket)
+  .get(secure, getTicket)
+  .put(secure, updateTicket)
+  .delete(secure, deleteTicket);
+
 
 export default router;

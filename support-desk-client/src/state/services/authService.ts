@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User } from "./authSlice";
+import { User } from "../slices/authSlice";
 
 const URL = "http://localhost:4000/api/users";
 

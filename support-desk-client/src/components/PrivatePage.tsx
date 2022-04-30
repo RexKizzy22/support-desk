@@ -3,11 +3,11 @@ import useAuthStatus from "../hooks/useAuthStatus";
 import Spinner from "./Spinner";
 
 const PrivatePage = () => {
-    const { isLoggedIn, checkingStatus } = useAuthStatus();
+  const { isLoggedIn, checkingStatus } = useAuthStatus();
 
-    if (checkingStatus) {
-        <Spinner />
-    }
+  if (checkingStatus) {
+    return <Spinner />;
+  }
 
   return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };

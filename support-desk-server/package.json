@@ -7,7 +7,8 @@
     "start": "node -r module-alias/register ./dist --env=production",
     "dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
-    "test:no-reloading": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./spec"
+    "test:no-reloading": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./spec",
+    "heroku:postbuild": "NPM_CONFIG_PRODUCTION=false pnpm install --prefix support-desk-client && pnpm build --prefix support-desk-client"
   },
   "nodemonConfig": {
     "watch": [

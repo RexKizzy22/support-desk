@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Input from "../components/Form/Input";
 import { useAppSelector, useAppDispatch } from "../hooks/useStore";
-import { register, reset } from "../state/auth/authSlice";
+import { register, reset } from "../state/slices/authSlice";
 import Spinner from "../components/Spinner";
 
 interface FormData {

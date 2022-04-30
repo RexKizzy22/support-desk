@@ -7,9 +7,9 @@ const useAuthStatus = () => {
 
     const { user } = useAppSelector((state) => state.auth);
 
-    useEffect(() => {
-        if (user) {
-            setIsLoggedIn(true);
+    useEffect(() => {        
+        if (!!user) {
+            setIsLoggedIn(true);            
         } else {
             setIsLoggedIn(false);
         }
