@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \"cd support-desk-server && pnpm dev\" \"cd support-desk-client && pnpm dev\" ",
     "dev": "concurrently \"cd support-desk-server && pnpm dev\" \"cd support-desk-client && pnpm dev\" ",
     "dev:server": "cd support-desk-server && pnpm dev",
     "dev:client": "cd support-desk-client && pnpm start"
