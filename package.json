@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "node -r module-alias/register ./dist --env=production",
     "start:dev": "concurrently \"pnpm dev\" \"pnpm dev --prefix client\" ",
