@@ -104,15 +104,15 @@
     "@typescript-eslint/parser": "^5.18.0",
     "@types/cors": "^2.8.12",
     "eslint": "^8.12.0",
-    "find": "^0.3.0",
-    "fs-extra": "^10.0.1",
     "jasmine": "^4.0.2",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2",
-    "tsconfig-paths": "^3.14.1",
     "colors": "1.4.0"
   },
   "dependencies": {
+    "tsconfig-paths": "^3.14.1",
+    "find": "^0.3.0",
+    "fs-extra": "^10.0.1",
     "typescript": "^4.6.3",
     "ts-node": "^10.7.0",
     "express-async-handler": "^1.2.0",
