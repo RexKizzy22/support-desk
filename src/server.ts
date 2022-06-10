@@ -69,11 +69,11 @@ app.set("views", viewsDir);
 let staticDir;
 if (process.env.NODE_ENV === "production") {
   // Set build folder as static
-  staticDir = path.join(__dirname, "../../support-desk-client/build");
+  staticDir = path.join(__dirname, "../client/build");
   app.use(express.static(staticDir));
 
   app.get("*", (_: Request, res: Response) => {
-    res.sendFile(__dirname, "../../support-desk-client/build/src/index.html");
+    res.sendFile(__dirname, "../client/build/src/index.html");
   });
 } else {
   staticDir = path.join(__dirname, "public");
