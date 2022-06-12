@@ -71,6 +71,7 @@ let staticDir;
 
 if (process.env.NODE_ENV === "production") {
   // Set build folder as static
+  console.log("Environment", process.env.NODE_ENV);
   staticDir = path.join(__dirname, "../client/build");
   app.use(express.static(staticDir));
 
@@ -81,13 +82,13 @@ if (process.env.NODE_ENV === "production") {
 } else {
   staticDir = path.join(__dirname, "public");
   app.use(express.static(staticDir));
-
+  
+  // Serve index.html file
+  app.get("*", (_: Request, res: Response) => {
+    res.send("<h1>Welcome to Support Desk API</h1>");
+  });
 }
 
-// Serve index.html file
-app.get("*", (_: Request, res: Response) => {
-  res.send("<h1>Welcome to Support Desk API</h1>");
-});
 
 // Export here and start in a diff file (for testing).
 export default app;
