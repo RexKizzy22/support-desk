@@ -76,7 +76,7 @@ if (process.env.NODE_ENV === "production") {
 
   // Serve index.html file
   app.get("*", (_: Request, res: Response) => {
-    res.sendFile(__dirname, "../client/dist/index.html");
+    res.sendFile(__dirname, "../client/index.html");
   });
 } else {
   staticDir = path.join(__dirname, "public");
