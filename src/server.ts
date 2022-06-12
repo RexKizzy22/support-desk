@@ -67,7 +67,7 @@ app.set("views", viewsDir);
 
 // Set static dir
 let staticDir;
-let dirname = path.resolve();
+// let dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
   // Set build folder as static
@@ -76,7 +76,7 @@ if (process.env.NODE_ENV === "production") {
 
   // Serve index.html file
   app.get("*", (_: Request, res: Response) => {
-    res.sendFile(dirname, "../client/build/index.html");
+    res.sendFile(__dirname, "../client/build/index.html");
   });
 } else {
   staticDir = path.join(__dirname, "public");
