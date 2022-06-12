@@ -59,7 +59,7 @@ if (process.env.NODE_ENV === "production") {
     app.use(express_1.default.static(staticDir));
     // Serve index.html file
     app.get("*", (_, res) => {
-        res.sendFile(__dirname, "../client/build/src/index.html");
+        res.sendFile(__dirname, "../client/build/index.html");
     });
 }
 else {
