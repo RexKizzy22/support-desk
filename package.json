@@ -7,7 +7,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "node -r module-alias/register ./dist --env=production",
+    "start": "node ./dist/index.js",
     "start:dev": "concurrently \"pnpm dev\" \"pnpm dev --prefix client\" ",
     "dev": "nodemon",
     "dev:client": "pnpm dev --prefix client",
@@ -30,7 +30,7 @@
       "start": "",
       "crash": "exit 1"
     },
-    "exec": "tsc -p ./tsconfig.json && ./node_modules/.bin/ts-node -r tsconfig-paths/register ./src"
+    "exec": "rm -rf ./dist && tsc -p ./tsconfig.json && ./node_modules/.bin/ts-node -r tsconfig-paths/register ./src"
   },
   "_moduleAliases": {
     "@services": "dist/services",

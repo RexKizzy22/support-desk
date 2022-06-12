@@ -1,5 +1,5 @@
-import Ticket from "src/dbModels/ticketModel";
-import Note from "src/dbModels/notesModel";
+import Ticket from "../dbModels/ticketModel";
+import Note from "../dbModels/notesModel";
 import { Request, Response } from "express";
 import StatusCodes, { ReasonPhrases } from "http-status-codes";
 import logger from "jet-logger";

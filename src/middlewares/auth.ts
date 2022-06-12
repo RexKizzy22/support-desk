@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import StatusCodes, { ReasonPhrases } from "http-status-codes";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import User from "src/dbModels/userModel";
+import User from "../dbModels/userModel";
 
 const { UNAUTHORIZED, NOT_FOUND } = StatusCodes;
 const { error } = console;

@@ -1,7 +1,7 @@
-import { IUser } from "src/dataModels/userModel";
-import { UserNotFoundError } from "@shared/errors";
+import { IUser } from "../dataModels/userModel";
+import { UserNotFoundError } from "../shared/errors"; //"@shared/errors";
 import User from "../dbModels/userModel";
-import { generateToken } from "src/middlewares/auth";
+import { generateToken } from "../middlewares/auth";
 
 const { error } = console;
 

@@ -1,5 +1,5 @@
 import express from "express";
-import { secure } from "src/middlewares/auth";
+import { secure } from "../middlewares/auth";
 import {
   getTickets,
   createTicket,

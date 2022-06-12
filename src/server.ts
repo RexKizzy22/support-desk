@@ -3,7 +3,7 @@ import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
 import cors from "cors";
-import colors from "colors";
+import _ from "colors";
 
 import express, { NextFunction, Request, Response } from "express";
 import StatusCodes from "http-status-codes";
@@ -11,7 +11,7 @@ import "express-async-errors";
 
 import apiRouter from "./routes/api";
 import logger from "jet-logger";
-import { CustomError } from "@shared/errors";
+import { CustomError } from "./shared/errors"; //"@shared/errors";
 
 // Constants
 const app = express();

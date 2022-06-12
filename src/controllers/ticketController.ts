@@ -1,4 +1,4 @@
-import Ticket from "src/dbModels/ticketModel";
+import Ticket from "../dbModels/ticketModel";
 import { Request, Response } from "express";
 import StatusCodes, { ReasonPhrases } from "http-status-codes";
 import logger from "jet-logger";

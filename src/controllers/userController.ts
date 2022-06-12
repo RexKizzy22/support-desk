@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import StatusCodes, { ReasonPhrases } from "http-status-codes";
 import bcrypt from "bcrypt";
 // import asyncHandler from "express-async-handler";
-import userService from "@services/userService";
-import { ParamMissingError } from "@shared/errors";
-import { IUser } from "src/dataModels/userModel";
+import userService from "../services/userService"; // "@services/userService"
+import { ParamMissingError } from "../shared/errors"; // "@shared/errors";
+import { IUser } from "../dataModels/userModel"; // "src/dataModels/userModel";
 // import { generateToken } from "src/middlewares/auth";
 
 const { CREATED, OK, BAD_REQUEST, UNAUTHORIZED, FORBIDDEN } = StatusCodes;
