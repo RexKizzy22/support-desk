@@ -58,7 +58,7 @@ if (process.env.NODE_ENV === "production") {
     staticDir = path_1.default.join(__dirname, "../client/build");
     app.use(express_1.default.static(staticDir));
     // Serve index.html file
-    app.get("*", (_, res) => {
+    app.get("/", (_, res) => {
         res.sendFile(__dirname, "../client/build/index.html");
     });
 }
