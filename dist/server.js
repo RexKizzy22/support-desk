@@ -13,7 +13,7 @@ const http_status_codes_1 = __importDefault(require("http-status-codes"));
 require("express-async-errors");
 const api_1 = __importDefault(require("./routes/api"));
 const jet_logger_1 = __importDefault(require("jet-logger"));
-const errors_1 = require("./shared/errors"); //"@shared/errors";
+const errors_1 = require("./shared/errors"); // "@shared/errors";
 // Constants
 const app = (0, express_1.default)();
 /***********************************************************************************
@@ -59,14 +59,14 @@ if (process.env.NODE_ENV === "production") {
     app.use(express_1.default.static(staticDir));
     // Serve index.html file
     app.get("/", (_, res) => {
-        res.sendFile(__dirname, "../client/build/index.html");
+        res.sendFile(__dirname, "../client/build/src/index.html");
     });
 }
 else {
     staticDir = path_1.default.join(__dirname, "public");
     app.use(express_1.default.static(staticDir));
     // Serve index.html file
-    app.get("/", (_, res) => {
+    app.get("*", (_, res) => {
         res.send("<h1>Welcome to Support Desk API</h1>");
     });
 }

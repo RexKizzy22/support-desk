@@ -11,7 +11,7 @@ import "express-async-errors";
 
 import apiRouter from "./routes/api";
 import logger from "jet-logger";
-import { CustomError } from "./shared/errors"; //"@shared/errors";
+import { CustomError } from "./shared/errors"; // "@shared/errors";
 
 // Constants
 const app = express();
@@ -67,24 +67,27 @@ app.set("views", viewsDir);
 
 // Set static dir
 let staticDir;
+let dirname = path.resolve();
+
 if (process.env.NODE_ENV === "production") {
   // Set build folder as static
   staticDir = path.join(__dirname, "../client/build");
   app.use(express.static(staticDir));
 
   // Serve index.html file
-  app.get("/", (_: Request, res: Response) => {
-    res.sendFile(__dirname, "../client/build/index.html");
+  app.get("*", (_: Request, res: Response) => {
+    res.sendFile(dirname, "../client/build/index.html");
   });
 } else {
   staticDir = path.join(__dirname, "public");
   app.use(express.static(staticDir));
 
-  // Serve index.html file
-  app.get("/", (_: Request, res: Response) => {
-    res.send("<h1>Welcome to Support Desk API</h1>");
-  });
 }
+
+// Serve index.html file
+app.get("*", (_: Request, res: Response) => {
+  res.send("<h1>Welcome to Support Desk API</h1>");
+});
 
 // Export here and start in a diff file (for testing).
 export default app;
