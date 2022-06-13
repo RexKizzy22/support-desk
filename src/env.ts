@@ -1,4 +1,5 @@
 import "dotenv/config";
+// "heroku:postbuild": "NPM_CONFIG_PRODUCTION=false cd client && pnpm install && pnpm build",
 
 export const MONGO_URI = process.env.MONGO_URI,
   JET_LOGGER_FILEPATH = process.env.JET_LOGGER_FILEPATH,

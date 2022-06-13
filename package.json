@@ -14,7 +14,7 @@
     "lint": "eslint . --ext .ts",
     "test": "nodemon --config ./spec/nodemon.json",
     "test:no-reloading": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./spec",
-    "heroku:postbuild": "NPM_CONFIG_PRODUCTION=false cd client && pnpm install && pnpm build"
+    "heroku-postbuild": "cd client && pnpm install && pnpm build"
   },
   "nodemonConfig": {
     "watch": [
