@@ -4,6 +4,7 @@ import path from "path";
 import helmet from "helmet";
 import cors from "cors";
 import _ from "colors";
+import { NODE_ENV } from './env'
 
 import express, { NextFunction, Request, Response } from "express";
 import StatusCodes from "http-status-codes";
@@ -24,13 +25,15 @@ const app = express();
 // Common middlewares
 
 // Show routes called in console during development
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+// if (NODE_ENV === "development") {
+//   app.use(morgan("dev"));
+// }
 
 // Security (helmet recommended in express docs)
-if (process.env.NODE_ENV === "production") {
+if (NODE_ENV === "production") {
   app.use(helmet());
+} else {
+  app.use(morgan("dev"));
 }
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -67,16 +70,16 @@ app.set("views", viewsDir);
 
 // Set static dir
 let staticDir;
-// let dirname = path.resolve();
 
-if (process.env.NODE_ENV === "production") {
+
+if (NODE_ENV === "production") {
   // Set build folder as static
   staticDir = path.join(__dirname, "../client/dist");
   app.use(express.static(staticDir));
 
   // Serve index.html file
   app.get("*", (_: Request, res: Response) => {
-    res.sendFile(__dirname, "../client/index.html");
+    res.sendFile(__dirname, "../client/dist/index.html");
   });
 } else {
   staticDir = path.join(__dirname, "public");

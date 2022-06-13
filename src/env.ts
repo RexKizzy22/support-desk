@@ -7,4 +7,5 @@ export const MONGO_URI = process.env.MONGO_URI,
   JET_LOGGER_MODE =
     process.env.NODE_ENV === "production"
       ? process.env.JET_LOGGER_MODE_PROD
-      : process.env.JET_LOGGER_MODE_LOCAL;
+      : process.env.JET_LOGGER_MODE_LOCAL,
+  NODE_ENV = process.env.NODE_ENV || 'development'
