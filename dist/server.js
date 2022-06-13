@@ -57,14 +57,17 @@ const viewsDir = path_1.default.join(__dirname, "views");
 app.set("views", viewsDir);
 // Set static dir
 let staticDir;
+let dirname = path_1.default.resolve();
 if (env_1.NODE_ENV === "production") {
     // Set build folder as static
-    staticDir = path_1.default.join(__dirname, "../client/dist");
-    app.use(express_1.default.static(staticDir));
+    // staticDir = path.join(dirname, "../client/dist");
+    // app.use(express.static(staticDir));
+    app.use(express_1.default.static(path_1.default.join(dirname, '/client/dist')));
     // Serve index.html file
-    app.get("*", (_, res) => {
-        res.sendFile(__dirname, "../client/dist/index.html");
-    });
+    // app.get("*", (_: Request, res: Response) => {
+    //   res.sendFile(path.join(dirname, "../client/dist/index.html"));
+    // });
+    app.get("*", (_, res) => res.sendFile(path_1.default.resolve(dirname, 'client', 'dist', 'index.html')));
 }
 else {
     staticDir = path_1.default.join(__dirname, "public");
