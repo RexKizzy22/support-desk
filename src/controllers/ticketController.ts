@@ -1,4 +1,5 @@
 import Ticket from "../dbModels/ticketModel";
+import {ITicket} from "../dataModels/ticketModel";
 import { Request, Response } from "express";
 import StatusCodes, { ReasonPhrases } from "http-status-codes";
 import logger from "jet-logger";
@@ -100,7 +101,7 @@ export const updateTicket = async (req: Request, res: Response) => {
 
     const updated = await Ticket.findByIdAndUpdate(
       { _id: ticket._id },
-      req.body,
+      req.body as ITicket,
       { new: true }
     );
 

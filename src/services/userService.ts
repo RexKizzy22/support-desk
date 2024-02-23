@@ -29,9 +29,9 @@ const getOne = async (user: IUser): Promise<IUser> => {
     const data = {
       id: newUser._id,
       name: newUser.name,
-      token: generateToken(newUser._id),
+      token: generateToken(newUser._id?.toString()),
       email: newUser.email,
-      password: newUser.password
+      password: newUser.password,
     };
 
     return data;
@@ -57,16 +57,15 @@ const addOne = async (user: IUser): Promise<IUser> => {
     const newUser = await User.create(user);
     return {
       id: newUser._id,
-      token: generateToken(newUser._id),
+      token: generateToken(newUser._id?.toString()),
       email: newUser.email,
-      password: newUser.password
+      password: newUser.password,
     };
   } catch (err) {
     error(err.message);
-    throw new Error(err.message);
+    throw new Error((err as Error).message);
   }
 };
-
 
 // Export default
 export default {

@@ -14,13 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const env_1 = require("../env");
+const jet_logger_1 = __importDefault(require("jet-logger"));
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        mongoose_1.default.set("strictQuery", false);
         const conn = yield mongoose_1.default.connect(env_1.MONGO_URI);
-        console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
+        jet_logger_1.default.info(`MongoDB Connected: ${conn.connection.host}`);
     }
     catch (error) {
-        console.log(`Error: ${error.message}`.red.underline.bold);
+        jet_logger_1.default.err(`Error: ${error.message}`);
         process.exit(1);
     }
 });

@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017-27019:27017-27019
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: support
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+      - mongodb-volume:/data/db
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4005:4005
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=development
+      - JWT_SECRET=secret
+      - MONGO_URI=mongodb://admin:support@mongodb:27017/support
+
+volumes:
+  mongodb-volume:

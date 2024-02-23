@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "../slices/authSlice";
 
-const URL = "http://localhost:4000/api/users";
+const URL = "http://localhost:4005/api/users";
 
 const register = async (userData: User) => {
   const { data } = await axios.post(`${URL}/register`, userData);

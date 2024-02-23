@@ -8,7 +8,7 @@ const jet_logger_1 = __importDefault(require("jet-logger"));
 const server_1 = __importDefault(require("./server"));
 const db_1 = __importDefault(require("./config/db"));
 // Constants
-const serverStartMsg = "Express server started on port: ", port = process.env.PORT || 4000;
+const serverStartMsg = "Express server started on port: ", port = process.env.PORT || 4005;
 // Database Connection
 (0, db_1.default)()
     .then(() => {

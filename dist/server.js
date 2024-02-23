@@ -20,11 +20,6 @@ const app = (0, express_1.default)();
 /***********************************************************************************
  *                                  Middlewares
  **********************************************************************************/
-// Common middlewares
-// Show routes called in console during development
-// if (NODE_ENV === "development") {
-//   app.use(morgan("dev"));
-// }
 // Security (helmet recommended in express docs)
 if (env_1.NODE_ENV === "production") {
     app.use((0, helmet_1.default)());
@@ -42,7 +37,7 @@ app.use((0, cors_1.default)());
 // Add api router
 app.use("/api", api_1.default);
 // Error handling
-app.use((err, _, res, __) => {
+app.use((err, _, res) => {
     jet_logger_1.default.err(err, true);
     const status = err instanceof errors_1.CustomError ? err.HttpStatus : http_status_codes_1.default.BAD_REQUEST;
     return res.status(status).json({
@@ -50,32 +45,22 @@ app.use((err, _, res, __) => {
     });
 });
 /***********************************************************************************
- *                                  Front-end content
+ *                                  Static content
  **********************************************************************************/
 // Set views dir
 const viewsDir = path_1.default.join(__dirname, "views");
 app.set("views", viewsDir);
-// Set static dir
-let staticDir;
-let dirname = path_1.default.resolve();
 if (env_1.NODE_ENV === "production") {
     // Set build folder as static
-    // staticDir = path.join(dirname, "../client/dist");
-    // app.use(express.static(staticDir));
-    app.use(express_1.default.static(path_1.default.join(dirname, '/client/dist')));
-    // Serve index.html file
-    // app.get("*", (_: Request, res: Response) => {
-    //   res.sendFile(path.join(dirname, "../client/dist/index.html"));
-    // });
-    app.get("*", (_, res) => res.sendFile(path_1.default.resolve(dirname, 'client', 'dist', 'index.html')));
+    app.use(express_1.default.static("../client/dist"));
+    app.get("*", (_, res) => {
+        res.sendFile(path_1.default.resolve("../client", "dist", "index.html"));
+    });
 }
 else {
-    staticDir = path_1.default.join(__dirname, "public");
-    app.use(express_1.default.static(staticDir));
-    // Serve index.html file
-    app.get("*", (_, res) => {
+    app.use(express_1.default.static(path_1.default.resolve("public")));
+    app.get("/", (_, res) => {
         res.send("<h1>Welcome to Support Desk API</h1>");
     });
 }
-// Export here and start in a diff file (for testing).
 exports.default = app;

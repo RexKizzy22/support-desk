@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
 import { MONGO_URI } from "../env";
+import logger from "jet-logger";
 
 const connectDB = async () => {
   try {
+    mongoose.set("strictQuery", false);
     const conn = await mongoose.connect(MONGO_URI as string);
-    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
+    logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.log(`Error: ${error.message}`.red.underline.bold);
+    logger.err(`Error: ${(error as Error).message}`);
     process.exit(1);
   }
 };

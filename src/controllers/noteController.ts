@@ -12,11 +12,14 @@ const { OK, BAD_REQUEST, UNAUTHORIZED } = StatusCodes;
  * @access Private
  * @route  GET /api/tickets/:ticketId/notes
  */
-export const getNotes = async (req: Request, res: Response) => {
+export const getNotes = async (
+  req: Request,
+  res: Response
+) => {
   try {
     const ticket = await Ticket.findById(req.params.ticketId);
 
-    if (ticket.user.toString() !== req.user.id?.toString()) {
+    if (ticket?.user.toString() !== req.user.id?.toString()) {
       return res.status(UNAUTHORIZED).json(ReasonPhrases.UNAUTHORIZED);
     }
 
@@ -39,7 +42,7 @@ export const addNote = async (req: Request, res: Response) => {
   try {
     const ticket = await Ticket.findById(req.params.ticketId);
 
-    if (ticket.user.toString() !== req.user.id?.toString()) {
+    if (ticket?.user.toString() !== req.user.id?.toString()) {
       return res.status(UNAUTHORIZED).json(ReasonPhrases.UNAUTHORIZED);
     }
 

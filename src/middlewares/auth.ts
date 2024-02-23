@@ -25,13 +25,13 @@ export const secure = async (
   }
 
   try {
-    let token = req.headers.authorization?.split(" ")[1];
-    let { id } = jwt.verify(
+    const token = req.headers.authorization?.split(" ")[1];
+    const { id } = jwt.verify(
       token as string,
       process.env.JWT_SECRET as string
     ) as JwtPayload;
 
-    let user = await User.findOne({ _id: id })
+    const user = await User.findOne({ _id: id })
       .select("-password")
       .lean()
       .exec();

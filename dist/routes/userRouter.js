@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.p = void 0;
+/* eslint-disable @typescript-eslint/no-misused-promises */
 const express_1 = require("express");
 const userController_1 = require("../controllers/userController");
 // Constants

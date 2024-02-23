@@ -30,6 +30,7 @@ const getAll = () => __awaiter(void 0, void 0, void 0, function* () {
  * @returns
  */
 const getOne = (user) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
         const newUser = yield userModel_1.default.findOne(user).lean().exec();
         if (!newUser) {
@@ -38,9 +39,9 @@ const getOne = (user) => __awaiter(void 0, void 0, void 0, function* () {
         const data = {
             id: newUser._id,
             name: newUser.name,
-            token: (0, auth_1.generateToken)(newUser._id),
+            token: (0, auth_1.generateToken)((_a = newUser._id) === null || _a === void 0 ? void 0 : _a.toString()),
             email: newUser.email,
-            password: newUser.password
+            password: newUser.password,
         };
         return data;
     }
@@ -56,6 +57,7 @@ const getOne = (user) => __awaiter(void 0, void 0, void 0, function* () {
  * @returns
  */
 const addOne = (user) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
     try {
         const userExists = yield userModel_1.default.exists({ email: user.email });
         if (userExists) {
@@ -64,9 +66,9 @@ const addOne = (user) => __awaiter(void 0, void 0, void 0, function* () {
         const newUser = yield userModel_1.default.create(user);
         return {
             id: newUser._id,
-            token: (0, auth_1.generateToken)(newUser._id),
+            token: (0, auth_1.generateToken)((_b = newUser._id) === null || _b === void 0 ? void 0 : _b.toString()),
             email: newUser.email,
-            password: newUser.password
+            password: newUser.password,
         };
     }
     catch (err) {

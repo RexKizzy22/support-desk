@@ -1,6 +1,8 @@
+import { Types } from "mongoose";
+
 // User schema
 export interface IUser {
-  id?: number;
+  id?: number | Types.ObjectId;
   token?: string;
   name?: string;
   email: string;

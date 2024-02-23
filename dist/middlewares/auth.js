@@ -54,9 +54,9 @@ const secure = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
         return res.status(UNAUTHORIZED).json(http_status_codes_1.ReasonPhrases.UNAUTHORIZED);
     }
     try {
-        let token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
-        let { id } = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
-        let user = yield userModel_1.default.findOne({ _id: id })
+        const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
+        const { id } = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
+        const user = yield userModel_1.default.findOne({ _id: id })
             .select("-password")
             .lean()
             .exec();

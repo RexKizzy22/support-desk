@@ -51,7 +51,7 @@ const getNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
         const ticket = yield ticketModel_1.default.findById(req.params.ticketId);
-        if (ticket.user.toString() !== ((_a = req.user.id) === null || _a === void 0 ? void 0 : _a.toString())) {
+        if ((ticket === null || ticket === void 0 ? void 0 : ticket.user.toString()) !== ((_a = req.user.id) === null || _a === void 0 ? void 0 : _a.toString())) {
             return res.status(UNAUTHORIZED).json(http_status_codes_1.ReasonPhrases.UNAUTHORIZED);
         }
         const notes = yield notesModel_1.default.find({ ticket: req.params.ticketId });
@@ -73,7 +73,7 @@ const addNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _b;
     try {
         const ticket = yield ticketModel_1.default.findById(req.params.ticketId);
-        if (ticket.user.toString() !== ((_b = req.user.id) === null || _b === void 0 ? void 0 : _b.toString())) {
+        if ((ticket === null || ticket === void 0 ? void 0 : ticket.user.toString()) !== ((_b = req.user.id) === null || _b === void 0 ? void 0 : _b.toString())) {
             return res.status(UNAUTHORIZED).json(http_status_codes_1.ReasonPhrases.UNAUTHORIZED);
         }
         const note = yield notesModel_1.default.create({
