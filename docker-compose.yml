@@ -18,7 +18,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: support
     volumes:
-      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - mongodb-volume:/data/db
 
   app:
